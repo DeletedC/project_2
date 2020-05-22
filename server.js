@@ -6,6 +6,9 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
+const studentsController = require('./controllers/students.js');
+
+const show = console.log;
 
 //___________________
 //Port
@@ -13,6 +16,13 @@ const db = mongoose.connection;
 
 // Allow use of Heroku's port or your own local port, depending on the environment
 const PORT = process.env.PORT || 3000;
+
+////////////////
+// View Engine
+////////////////
+
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 //___________________
 //Database
@@ -46,6 +56,9 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
+
+// Use the students controller
+app.use('/students', studentsController);
 
 //___________________
 // Routes

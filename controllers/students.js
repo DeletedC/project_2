@@ -12,7 +12,9 @@ const Student = require('../models/students.js');
 
 // === PRESENTATION ROUTES ===
 
-
+studentsController.get('/', (req, res) => {
+    res.render('Index');
+})
 
 // EXPORT
 module.exports = studentsController;
