@@ -6,13 +6,17 @@ class Show extends React.Component {
         const {student} = this.props;
         return (
             <Layout>
+                <nav>
+                    <a href="/students">Home</a>
+                    <a href="/students/new">New Student</a>
+                </nav>
                 <h1>{student.nameFirst} {student.nameLast}</h1>
                 <img src={student.img}/>
-            <div>
-                <h3>Book: {student.book}</h3>
-                <h3>Level: {student.level}</h3>
-                <h3>Notes: {student.notes}</h3>
-            </div>
+                <div>
+                    <h3>Book: {student.book}</h3>
+                    <h3>Level: {student.level}</h3>
+                    <h3>Notes: {student.notes}</h3>
+                </div>
             </Layout>
         );
     };

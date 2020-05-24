@@ -5,6 +5,10 @@ class New extends React.Component {
     render() {
         return (
             <Layout>
+                <nav>
+                    <a href="/students">Home</a>
+                    <a href="/students/new">New Student</a>
+                </nav>
                 <h1>New Student Form</h1>
                 <form action="/students" method="POST">
                     First Name: <input type="text" name="nameFirst"/><br/>

@@ -6,6 +6,10 @@ class Edit extends React.Component {
         const {student} = this.props;
         return (
             <Layout>
+                <nav>
+                    <a href="/students">Home</a>
+                    <a href="/students/new">New Student</a>
+                </nav>
                 <h1>Edit Student</h1>
                 <form action={`/students/edit/${student._id}?_method=PUT`} method="POST">
                     First Name: <input type="text" name="nameFirst" value={student.nameFirst}/><br/>
