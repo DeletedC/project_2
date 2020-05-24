@@ -6,15 +6,42 @@ const mongoose = require('mongoose');
 
 const Student = require('../models/students.js');
 
+const show = console.log;
+
 /////////////////////
 // ROUTES
 ////////////////////
 
 // === PRESENTATION ROUTES ===
 
+// INDEX ROUTE
 studentsController.get('/', (req, res) => {
-    res.render('Index');
-})
+    Student.find({}, (error, allStudents) => {
+        if (error) {
+            show(error);
+        } else {
+            res.render('Index', {students: allStudents});
+        }
+    });
+});
+
+// NEW ROUTE
+studentsController.get('/new', (req, res) => {
+    res.render('New');
+});
+
+// === FUNCTIONAL ROUTES ===
+
+// CREATE ROUTE
+studentsController.post('/', (req, res) => {
+    Student.create(req.body, (error, newStudent) => {
+        if (error) {
+            show(error);
+        } else {
+            res.redirect('/');
+        }
+    });
+});
 
 // EXPORT
 module.exports = studentsController;

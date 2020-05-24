@@ -66,7 +66,7 @@ app.use('/students', studentsController);
 
 //localhost:3000 
 app.get('/' , (req, res) => {
-  res.send('Hello World!');
+  res.redirect('/students');
 });
 
 //___________________
