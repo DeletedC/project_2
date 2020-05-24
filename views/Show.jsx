@@ -17,6 +17,7 @@ class Show extends React.Component {
                     <h3>Level: {student.level}</h3>
                     <h3>Notes: {student.notes}</h3>
                 </div>
+                <a href={`/students/edit/${student._id}`}>Edit</a>
             </Layout>
         );
     };
