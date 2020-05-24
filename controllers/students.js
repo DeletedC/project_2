@@ -41,6 +41,17 @@ studentsController.get('/new', (req, res) => {
     res.render('New');
 });
 
+// EDIT ROUTE
+studentsController.get('/edit/:id', (req, res) => {
+    Student.findById(req.params.id, (error, foundStudent) => {
+        if (error) {
+            show(error);
+        } else {
+            res.render('Edit', {student: foundStudent});
+        }
+    });
+});
+
 // === FUNCTIONAL ROUTES ===
 
 // CREATE ROUTE
@@ -50,6 +61,17 @@ studentsController.post('/', (req, res) => {
             show(error);
         } else {
             res.redirect('/');
+        }
+    });
+});
+
+// UPDATE ROUTE
+studentsController.put('/edit/:id', (req, res) => {
+    Student.findByIdAndUpdate(req.params.id, req.body, (error, data) => {
+        if (error) {
+            show(error);
+        } else {
+            res.redirect('/students');
         }
     });
 });
