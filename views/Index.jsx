@@ -10,7 +10,9 @@ class Index extends React.Component {
                 <div>
                     {students.map((student, index) => {
                         return (
-                            <h2>{student.nameFirst} {student.nameLast}</h2>
+                            <a href={`/students/${student._id}`}>
+                                <h2>{student.nameFirst} {student.nameLast}</h2>
+                            </a>
                         );
                     })};
                 </div>

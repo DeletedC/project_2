@@ -25,6 +25,17 @@ studentsController.get('/', (req, res) => {
     });
 });
 
+// SHOW ROUTE
+studentsController.get('/:id', (req, res) => {
+    Student.findById(req.params.id, (error, foundStudent) => {
+        if (error) {
+            show(error);
+        } else {
+            res.render('Show', {student: foundStudent});
+        }
+    });
+});
+
 // NEW ROUTE
 studentsController.get('/new', (req, res) => {
     res.render('New');
