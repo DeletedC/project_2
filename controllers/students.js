@@ -76,5 +76,16 @@ studentsController.put('/edit/:id', (req, res) => {
     });
 });
 
+// DELETE ROUTE
+studentsController.delete('/:id', (req, res) => {
+    Student.findByIdAndRemove(req.params.id, (error, data) => {
+        if (error) {
+            show(error);
+        } else {
+            res.redirect('/students');
+        }
+    });
+});
+
 // EXPORT
 module.exports = studentsController;
