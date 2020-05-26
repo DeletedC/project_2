@@ -20,6 +20,9 @@ class Edit extends React.Component {
                     Notes: <input type="text" name="notes" value={student.notes}/><br/>
                     <input type="submit" value="Submit"/>
                 </form>
+                <form action={`/students/${student._id}?_method=DELETE`} method="post">
+                    <input type="submit" value="Delete"/>
+                </form>
             </Layout>
         );
     };

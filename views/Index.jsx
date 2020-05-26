@@ -22,6 +22,9 @@ class Index extends React.Component {
                                     <h2>{student.nameFirst} {student.nameLast}</h2>
                                 </a>
                                 <a href={`/students/edit/${student._id}`}>Edit</a>
+                                <form action={`/students/${student._id}?_method=DELETE`} method="post">
+                                    <input type="submit" value="Delete"/>
+                                </form>
                                 </>
                             );
                         })}
