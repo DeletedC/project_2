@@ -4,6 +4,18 @@ const Layout = require('./components/Layout.jsx');
 class Index extends React.Component {
     render() {
         const {students} = this.props;
+
+        // Alphabetizing the array
+        students.sort((a, b) => {
+            if (a.nameLast.toUpperCase() > b.nameLast.toUpperCase()) {
+                return 1;
+            } else if (a.nameLast.toUpperCase() < b.nameLast.toUpperCase()) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+
         return (
             <Layout>
                 <div className="container-fluid">
