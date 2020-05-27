@@ -17,9 +17,11 @@ class Show extends React.Component {
                     <h3>Level: {student.level}</h3>
                     <h3>Notes: {student.notes}</h3>
                 </div>
-                <a href={`/students/edit/${student._id}`}>Edit</a>
+                <form action={`/students/edit/${student._id}`} method="get">
+                    <input className="btn btn-outline-secondary" type="submit" value="Edit"/>
+                </form>
                 <form action={`/students/${student._id}?_method=DELETE`} method="post">
-                    <input type="submit" value="Delete"/>
+                    <input className="btn btn-outline-danger" type="submit" value="Delete"/>
                 </form>
             </Layout>
         );

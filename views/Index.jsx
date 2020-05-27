@@ -18,24 +18,26 @@ class Index extends React.Component {
 
         return (
             <Layout>
-                <div className="container-fluid">
+                <div className="container">
                     <div className="jumbotron">
-                        <h1>Student Tracker</h1>
+                        <h1 className="text-center">Student Tracker</h1>
                     </div>
-                    <nav className="navbar justify-content-end">
-                        <a className="nav-link" href="/students">Home</a>
-                        <a className="nav-link" href="/students/new">New Student</a>
+                    <nav className="nav nav-fill">
+                        <a className="nav-item nav-link" href="/students" role="button">Home</a>
+                        <a className="nav-item nav-link" href="/students/new" role="button">New Student</a>
                     </nav>
-                    <div>
+                    <div className="col-8">
                         {students.map((student, index) => {
                             return (
                                 <>
                                 <a href={`/students/${student._id}`}>
-                                    <h2>{student.nameLast}, {student.nameFirst}</h2>
+                                    <h2>{student.nameFirst} {student.nameLast}</h2>
                                 </a>
-                                <a href={`/students/edit/${student._id}`}>Edit</a>
+                                <form action={`/students/edit/${student._id}`} method="get">
+                                    <input className="btn btn-outline-secondary" type="submit" value="Edit"/>
+                                </form>
                                 <form action={`/students/${student._id}?_method=DELETE`} method="post">
-                                    <input type="submit" value="Delete"/>
+                                    <input className="btn btn-outline-danger" type="submit" value="Delete"/>
                                 </form>
                                 </>
                             );

@@ -17,7 +17,8 @@ class New extends React.Component {
                     Book: <input type="text" name="book"/><br/>
                     Level: <input type="text" name="level"/><br/>
                     Notes: <input type="text" name="notes"/><br/>
-                    <input type="submit" value="Submit"/>
+                    <br/>
+                    <input className="btn btn-outline-success" type="submit" value="Submit"/>
                 </form>
             </Layout>
         );
