@@ -2,3 +2,18 @@ form {
     display: inline;
     margin: .5rem;
 }
+
+body {
+    background: rgba(255, 255, 255, 0.904);
+}
+
+.jumbotron {
+    font-family: 'Chivo', sans-serif;
+    font-style: italic;
+    color: rgba(189, 189, 189, 0.9);
+    background: rgba(0, 0, 0, .9);
+}
+
+.img {
+    width: 25vw;
+}

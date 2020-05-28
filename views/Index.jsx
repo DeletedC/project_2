@@ -20,9 +20,11 @@ class Index extends React.Component {
             <Layout>
                 <div className="container">
                     <div className="jumbotron">
+                        <h1 className="text-center">Piano Studio</h1>
                         <h1 className="text-center">Student Tracker</h1>
+                        <img className="img-fluid" src="./img/piano-3717165_1920.jpg"/>
                     </div>
-                    <nav className="nav nav-fill">
+                    <nav className="nav justify-content-center">
                         <a className="nav-item nav-link" href="/students" role="button">Home</a>
                         <a className="nav-item nav-link" href="/students/new" role="button">New Student</a>
                     </nav>

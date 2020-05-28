@@ -11,6 +11,8 @@ class Layout extends React.Component {
                     {/* Personal CSS */}
                     <link href="/css/style.css" rel="stylesheet"/>
                     <title>Student Tracker</title>
+
+                    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,700;0,900;1,400&display=swap" rel="stylesheet"/> 
                 </head>
                 <body>
                     {this.props.children}
