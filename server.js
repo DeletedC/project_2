@@ -10,6 +10,10 @@ const studentsController = require('./controllers/students.js');
 
 const show = console.log;
 
+
+// Saves me some typing
+const env = process.env;
+
 //___________________
 //Port
 //___________________
