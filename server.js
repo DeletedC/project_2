@@ -37,10 +37,14 @@ app.engine('jsx', require('express-react-views').createEngine());
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/project2';
 
 // Connect to Mongo
-mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true, useFindAndModify: true, useUnifiedTopology: true });
+  mongoose.connect(MONGODB_URI,  
+    { useNewUrlParser: true, useFindAndModify: true, useUnifiedTopology: true })
+    .catch(err => {
+      console.log("Hello, there!");
+    });
 
 // Error / success
-db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
+db.on('error', (err) => console.log(err.message + ', is Mongod not running?'));
 db.on('connected', () => console.log('Mongo connected'));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
