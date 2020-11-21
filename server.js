@@ -7,6 +7,7 @@ const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
 const studentsController = require('./controllers/students.js');
+require('dotenv').config() // To include the .env file
 
 const show = console.log;
 
@@ -40,7 +41,7 @@ mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true, useFindAndModify: true,
 
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
-db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
+db.on('connected', () => console.log('Mongo connected'));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 // open the connection to mongo
