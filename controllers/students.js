@@ -3,10 +3,21 @@ const express = require('express');
 const studentsController = express.Router();
 
 const mongoose = require('mongoose');
+require('../server.js');
 
 const Student = require('../models/students.js');
 
 const show = console.log;
+
+/////////////////////
+// MIDDLEWARE
+////////////////////
+
+// Check if database is active
+// const dbCheck = (req, res, next) => {
+//         console.log(db.runCommand({connectionStatus: 1}));
+//         next();
+// }
 
 /////////////////////
 // ROUTES
@@ -15,14 +26,27 @@ const show = console.log;
 // === PRESENTATION ROUTES ===
 
 // INDEX ROUTE
-studentsController.get('/', (req, res) => {
-    Student.find({}, (error, allStudents) => {
-        if (error) {
-            show(error);
+studentsController.get('/', async (req, res) => {
+    console.log("Where am I?");
+
+    try {
+        if (mongoose.connection.readyState == 0) {
+            console.log(mongoose.connection.readyState);
+            res.render('Index', {students: 'noDatabase'});
         } else {
-            res.render('Index', {students: allStudents});
+            await Student.find({}, (error, allStudents) => {
+                if (error) {
+                    show(error);
+                } else {
+                    res.render('Index', {students: allStudents});
+                }
+            });
         }
-    });
+        
+    } catch (error) {
+        res.send("Haha, whoops from the Index route!");
+    }
+
 });
 
 // NEW ROUTE
