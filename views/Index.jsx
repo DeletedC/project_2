@@ -6,10 +6,8 @@ class Index extends React.Component {
         const {students} = this.props;
         const isDatabaseConnected = () => {
             if (students == 'noDatabase') {
-                console.log(students);
                 return false;
             } else {
-                console.log(students);
                 return true;
             }
         }
