@@ -3,7 +3,6 @@ const express = require('express');
 const studentsController = express.Router();
 
 const mongoose = require('mongoose');
-require('../server.js');
 
 const Student = require('../models/students.js');
 
@@ -27,11 +26,9 @@ const show = console.log;
 
 // INDEX ROUTE
 studentsController.get('/', async (req, res) => {
-    console.log("Where am I?");
-
     try {
+        // First, verify that the database is connected
         if (mongoose.connection.readyState == 0) {
-            console.log(mongoose.connection.readyState);
             res.render('Index', {students: 'noDatabase'});
         } else {
             await Student.find({}, (error, allStudents) => {
@@ -41,10 +38,9 @@ studentsController.get('/', async (req, res) => {
                     res.render('Index', {students: allStudents});
                 }
             });
-        }
-        
+        }      
     } catch (error) {
-        res.send("Haha, whoops from the Index route!");
+        res.send(error);
     }
 
 });
