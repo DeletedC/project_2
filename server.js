@@ -9,10 +9,8 @@ const db = mongoose.connection;
 const studentsController = require('./controllers/students.js');
 require('dotenv').config() // To include the .env file
 
-const show = console.log;
-
-
 // Saves me some typing
+const show = console.log;
 const env = process.env;
 
 //___________________
@@ -34,19 +32,19 @@ app.engine('jsx', require('express-react-views').createEngine());
 //___________________
 
 // How to connect to the database either via heroku or locally
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/project2';
+const MONGODB_URI = env.MONGODB_URI || 'mongodb://localhost/project2';
 
 // Connect to Mongo
   mongoose.connect(MONGODB_URI,  
     { useNewUrlParser: true, useFindAndModify: true, useUnifiedTopology: true })
     .catch(err => {
-      console.log("Hello, there!");
+      show(`Error connecting to MongoDB: \n${err.message}`);
     });
 
 // Error / success
-db.on('error', (err) => console.log(err.message + ', is Mongod not running?'));
-db.on('connected', () => console.log('Mongo connected'));
-db.on('disconnected', () => console.log('mongo disconnected'));
+//db.on('error', (err) => show(err.message + ', is Mongod not running?'));
+db.on('connected', () => show('Mongo is connected.'));
+db.on('disconnected', () => show('Mongo has disconnected.'));
 
 // open the connection to mongo
 db.on('open' , ()=>{});
@@ -81,4 +79,4 @@ app.get('/' , (req, res) => {
 //___________________
 //Listener
 //___________________
-app.listen(PORT, () => console.log( 'Listening on port:', PORT));
+app.listen(PORT, () => show( 'Listening on port:', PORT));
