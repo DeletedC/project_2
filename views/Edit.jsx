@@ -10,7 +10,7 @@ class Edit extends React.Component {
                     <a className="nav-item nav-link" href="/students" role="button">Home</a>
                     <a className="nav-item nav-link" href="/students/new" role="button">New Student</a>
                 </nav>
-                <div className="container-fluid">
+                <div className="container">
                     <h1>{student.nameFirst} {student.nameLast}</h1>
                     <h2>Edit</h2>
                     <form action={`/students/edit/${student._id}?_method=PUT`} method="POST">

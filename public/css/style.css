@@ -11,9 +11,15 @@ body {
     font-family: 'Chivo', sans-serif;
     font-style: italic;
     color: rgba(189, 189, 189, 0.9);
-    background: rgba(0, 0, 0, .9);
+    /* background: rgba(0, 0, 0, .9); */
+    background-image: url("../img/piano-3717165_1920.jpg");
+    background-size: cover;
 }
 
 .img {
     width: 25vw;
+}
+
+input {
+    margin: 5px auto;
 }
