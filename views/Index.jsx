@@ -31,7 +31,6 @@ class Index extends React.Component {
                 <div className="jumbotron">
                     <h1 className="text-center">Piano Studio</h1>
                     <h1 className="text-center">Student Tracker</h1>
-                    {/* <img className="img" src="./img/piano-3717165_1920.jpg"/> */}
                 </div>
                 <nav className="nav justify-content-center">
                     <a className="nav-item nav-link" href="/students" role="button">Home</a>
@@ -40,29 +39,30 @@ class Index extends React.Component {
                         : ''
                     }
                 </nav>
-                <div className="container">
-                    <div className="row">
-                        {isDatabaseConnected()
-                            ? students.map((student, index) => {
-                                return (
-                                    <div className="col-3 text-center mb-3 mt-3">
-                                    <a href={`/students/${student._id}`}>
-                                        <h2>{student.nameFirst} {student.nameLast}</h2>
-                                        <img className="img-thumbnail" src={student.img}></img>
-                                    </a>
-                                    <form action={`/students/edit/${student._id}`} method="get">
-                                        <input className="btn btn-outline-secondary" type="submit" value="Edit"/>
-                                    </form>
-                                    <form action={`/students/${student._id}?_method=DELETE`} method="post">
-                                        <input className="btn btn-outline-danger" type="submit" value="Delete"/>
-                                    </form>
-                                    </div>
-                                );
-                            })
 
-                            : <p>The database is not connected. Please try again later.</p>
-                        }
-                    </div>
+                <div className="container">
+                <div className="row">
+                {isDatabaseConnected()
+                    ? students.map((student, index) => {
+                        return (
+                            <div className="col-sm-3 text-center mb-3 mt-3">
+                            <a href={`/students/${student._id}`}>
+                                <h2>{student.nameFirst} {student.nameLast}</h2>
+                                <img className="card-img-top img-thumbnail" src={student.img}></img>
+                            </a>
+                            <form action={`/students/edit/${student._id}`} method="get">
+                                <input className="btn btn-outline-secondary" type="submit" value="Edit"/>
+                            </form>
+                            <form action={`/students/${student._id}?_method=DELETE`} method="post">
+                                <input className="btn btn-outline-danger" type="submit" value="Delete"/>
+                            </form>
+                            </div>
+                        );
+                    })
+
+                    : <p>The database is not connected. Please try again later.</p>
+                }
+                </div>
                 </div>   
             </Layout>
         );
