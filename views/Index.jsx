@@ -47,7 +47,7 @@ class Index extends React.Component {
                         return (
                             <div className="col-sm-3 text-center mb-3 mt-3">
                             <a href={`/students/${student._id}`}>
-                                <h2>{student.nameFirst} {student.nameLast}</h2>
+                                <h2>{student.nameLast}, {student.nameFirst}</h2>
                                 <img className="card-img-top img-thumbnail" src={student.img}></img>
                             </a>
                             <form action={`/students/edit/${student._id}`} method="get">
