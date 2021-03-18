@@ -6,7 +6,7 @@ class Card extends React.Component {
         const {student} = this.props;
 
         return (
-            <div className="col-sm-3 text-center mb-3 mt-3">
+            <div className="col-md-3 col-sm-6 text-center mb-3 mt-3">
                 <a href={`/students/${student._id}`}>
                     <h2>{student.nameLast}, {student.nameFirst}</h2>
                     <img className="card-img-top img-thumbnail" src={student.img}></img>
