@@ -41,7 +41,10 @@ class Index extends React.Component {
                         );
                     })
 
-                    : <p>The database is not connected. Please try again later.</p>
+                    : 
+                    <div className="col mt-5 text-center">
+                        <h3>The database is not connected. Please try again later.</h3>
+                    </div>  
                 }
                 </div>
                 </div>   
