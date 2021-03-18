@@ -28,11 +28,11 @@ class Index extends React.Component {
 
         return (
             <Layout>
-                <div className="jumbotron">
+                <div className="jumbotron mb-0">
                     <h1 className="text-center">Piano Studio</h1>
                     <h1 className="text-center">Student Tracker</h1>
                 </div>
-                <nav className="nav justify-content-center">
+                <nav className="nav justify-content-center p-3 sticky-top">
                     <a className="nav-item nav-link" href="/students" role="button">Home</a>
                     {isDatabaseConnected()
                         ? <a className="nav-item nav-link" href="/students/new" role="button">New Student</a>
@@ -50,12 +50,15 @@ class Index extends React.Component {
                                 <h2>{student.nameLast}, {student.nameFirst}</h2>
                                 <img className="card-img-top img-thumbnail" src={student.img}></img>
                             </a>
-                            <form action={`/students/edit/${student._id}`} method="get">
-                                <input className="btn btn-outline-secondary" type="submit" value="Edit"/>
-                            </form>
-                            <form action={`/students/${student._id}?_method=DELETE`} method="post">
-                                <input className="btn btn-outline-danger" type="submit" value="Delete"/>
-                            </form>
+                            <div className="row justify-content-center">
+                                <form action={`/students/edit/${student._id}`} method="get">
+                                    <input className="btn btn-outline-secondary" type="submit" value="Edit"/>
+                                </form>
+                                <form action={`/students/${student._id}?_method=DELETE`} method="post">
+                                    <input className="btn btn-outline-danger" type="submit" value="Delete"/>
+                                </form>
+                            </div>
+                            
                             </div>
                         );
                     })
