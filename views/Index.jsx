@@ -1,19 +1,14 @@
 const React = require('react');
 const Layout = require('./components/Layout.jsx');
+import {isDatabaseConnected} from '../public/js/check'
 
 class Index extends React.Component {
     render() {
         const {students} = this.props;
-        const isDatabaseConnected = () => {
-            if (students == 'noDatabase') {
-                return false;
-            } else {
-                return true;
-            }
-        }
+        let connected = isDatabaseConnected(students);
 
         // Alphabetizing the array
-        if (isDatabaseConnected()) {
+        if (connected) {
             students.sort((a, b) => {
                 if (a.nameLast.toUpperCase() > b.nameLast.toUpperCase()) {
                     return 1;
@@ -30,7 +25,7 @@ class Index extends React.Component {
             <Layout>
                 <nav className="nav justify-content-center p-3 sticky-top">
                     <a className="nav-item nav-link" href="/students" role="button">Home</a>
-                    {isDatabaseConnected()
+                    {connected
                         ? <a className="nav-item nav-link" href="/students/new" role="button">New Student</a>
                         : ''
                     }
@@ -38,7 +33,7 @@ class Index extends React.Component {
 
                 <div className="container">
                 <div className="row">
-                {isDatabaseConnected()
+                {connected
                     ? students.map((student, index) => {
                         return (
                             <div className="col-sm-3 text-center mb-3 mt-3">
