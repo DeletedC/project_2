@@ -1,5 +1,6 @@
 const React= require('react');
 const Banner = require('./Banner');
+const Footer = require('./Footer');
 
 class Layout extends React.Component {
     render() {
@@ -18,6 +19,7 @@ class Layout extends React.Component {
                 <body>
                     <Banner/>
                     {this.props.children}
+                    <Footer/>
                 </body>
             </html>
         );

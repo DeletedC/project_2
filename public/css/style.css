@@ -10,7 +10,7 @@ body {
 .jumbotron {
     font-family: 'Chivo', sans-serif;
     font-style: italic;
-    color: rgba(189, 189, 189, 0.9);
+    color: rgb(189, 189, 189);
     background-image: url("../img/piano-3717165_1920.jpg");
     background-size: cover;
 }
@@ -32,6 +32,14 @@ input {
 
 .nav {
     background: rgb(31, 31, 31);
+}
+
+.footer {
+    color: white;
+    background: rgb(31, 31, 31);
+    position: relative;
+    bottom: 0;
+    padding-bottom: 5vh;
 }
 
 @media (max-width: 575px) {

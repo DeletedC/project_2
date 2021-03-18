@@ -35,7 +35,7 @@ app.engine('jsx', require('express-react-views').createEngine());
 const MONGODB_URI = env.MONGODB_URI || 'mongodb://localhost/project2';
 
 // Connect to Mongo
-  mongoose.connect("MONGODB_URI",  
+  mongoose.connect(MONGODB_URI,  
     { useNewUrlParser: true, useFindAndModify: true, useUnifiedTopology: true })
     .catch(err => {
       show(`Error connecting to MongoDB: \n${err.message}`);

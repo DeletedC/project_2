@@ -1,4 +1,5 @@
 const React= require('react');
+
 class Card extends React.Component {
     render() {
 
