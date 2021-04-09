@@ -9,7 +9,7 @@ class Layout extends React.Component {
                 <head>
                     {/* meta tags for LinkedIn */}
                     <meta property="og:title" content="Piano Studio Student Tracker"/>
-                    <meta property="og:image" content="../../public/img/screenshot.png"/>
+                    <meta property="og:image" content="https://curtiswoods.herokuapp.com/img/screenshot.png"/>
                     <meta property="og:description" content="Piano Studio Student Tracker"/>
                     <meta property="og:url" content="//curtiswoods.herokuapp.com/students"/>
 
