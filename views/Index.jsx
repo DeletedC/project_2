@@ -1,19 +1,15 @@
 const React = require('react');
 const Layout = require('./components/Layout.jsx');
+const Card = require('./components/Card');
+import {isDatabaseConnected} from '../public/js/check'
 
 class Index extends React.Component {
     render() {
         const {students} = this.props;
-        const isDatabaseConnected = () => {
-            if (students == 'noDatabase') {
-                return false;
-            } else {
-                return true;
-            }
-        }
+        let connected = isDatabaseConnected(students);
 
         // Alphabetizing the array
-        if (isDatabaseConnected()) {
+        if (connected) {
             students.sort((a, b) => {
                 if (a.nameLast.toUpperCase() > b.nameLast.toUpperCase()) {
                     return 1;
@@ -28,41 +24,30 @@ class Index extends React.Component {
 
         return (
             <Layout>
-                <div className="container">
-                    <div className="jumbotron">
-                        <h1 className="text-center">Piano Studio</h1>
-                        <h1 className="text-center">Student Tracker</h1>
-                        <img className="img-fluid" src="./img/piano-3717165_1920.jpg"/>
-                    </div>
-                    <nav className="nav justify-content-center">
-                        <a className="nav-item nav-link" href="/students" role="button">Home</a>
-                        {isDatabaseConnected()
-                            ? <a className="nav-item nav-link" href="/students/new" role="button">New Student</a>
-                            : ''
-                        }
-                    </nav>
-                    <div className="col-8">
-                        {isDatabaseConnected()
-                            ? students.map((student, index) => {
-                                return (
-                                    <>
-                                    <a href={`/students/${student._id}`}>
-                                        <h2>{student.nameFirst} {student.nameLast}</h2>
-                                    </a>
-                                    <form action={`/students/edit/${student._id}`} method="get">
-                                        <input className="btn btn-outline-secondary" type="submit" value="Edit"/>
-                                    </form>
-                                    <form action={`/students/${student._id}?_method=DELETE`} method="post">
-                                        <input className="btn btn-outline-danger" type="submit" value="Delete"/>
-                                    </form>
-                                    </>
-                                );
-                            })
+                <nav className="nav justify-content-center p-3 sticky-top">
+                    <a className="nav-item nav-link" href="/students" role="button">Home</a>
+                    {connected
+                        ? <a className="nav-item nav-link" href="/students/new" role="button">New Student</a>
+                        : ''
+                    }
+                </nav>
 
-                            : <p>The database is not connected. Please try again later.</p>
-                        }
-                    </div>
+                <div className="container">
+                <div className="row">
+                {connected
+                    ? students.map((student, index) => {
+                        return (
+                            <Card student={student}/>
+                        );
+                    })
+
+                    : 
+                    <div className="col mt-5 text-center">
+                        <h3>The database is not connected. Please try again later.</h3>
+                    </div>  
+                }
                 </div>
+                </div>   
             </Layout>
         );
     };
